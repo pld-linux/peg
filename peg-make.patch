@@ -1,0 +1,37 @@
+--- peg-0.1.18/Makefile.orig	2016-07-22 02:55:15.000000000 +0200
++++ peg-0.1.18/Makefile	2018-02-20 21:24:08.528149541 +0100
+@@ -1,4 +1,4 @@
+-CFLAGS = -g -Wall $(OFLAGS) $(XFLAGS) -Isrc
++CFLAGS = -Wall $(OFLAGS) $(XFLAGS) -Isrc
+ OFLAGS = -O3 -DNDEBUG
+ #OFLAGS = -pg
+ 
+@@ -7,17 +7,15 @@
+ all : peg leg
+ 
+ peg : peg.o $(OBJS)
+-	$(CC) $(CFLAGS) -o $@-new peg.o $(OBJS)
+-	mv $@-new $@
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ peg.o $(OBJS)
+ 
+ leg : leg.o $(OBJS)
+-	$(CC) $(CFLAGS) -o $@-new leg.o $(OBJS)
+-	mv $@-new $@
++	$(CC) $(LDFLAGS) $(CFLAGS) -o $@ leg.o $(OBJS)
+ 
+ ROOT	=
+ PREFIX	= /usr/local
+ BINDIR	= $(ROOT)$(PREFIX)/bin
+-MANDIR	= $(ROOT)$(PREFIX)/man/man1
++MANDIR	= $(ROOT)$(PREFIX)/share/man/man1
+ 
+ install : $(BINDIR) $(BINDIR)/peg $(BINDIR)/leg $(MANDIR) $(MANDIR)/peg.1
+ 
+@@ -26,7 +24,6 @@
+ 
+ $(BINDIR)/% : %
+ 	cp -p $< $@
+-	strip $@
+ 
+ $(MANDIR) :
+ 	mkdir -p $(MANDIR)
