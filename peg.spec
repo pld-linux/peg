@@ -2,7 +2,7 @@ Summary:	Parser generators
 Summary(pl.UTF-8):	Generatory parserów
 Name:		peg
 Version:	0.1.18
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Tools
 Source0:	http://piumarta.com/software/peg/%{name}-%{version}.tar.gz
